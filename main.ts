@@ -2,12 +2,13 @@
 
 import { Command } from "@cliffy/command";
 import { aliasCommand } from "./src/commands/alias.ts";
+import { keywordCommand } from "./src/commands/keyword.ts";
 import { getNotePath } from "./src/config.ts";
 import { openEditor } from "./src/editor.ts";
 import { extractTitle, saveNote } from "./src/note.ts";
 
 const main = new Command()
-  .name("qn")
+  .name("notes")
   .version("1.0.0")
   .description("Quick note-taking CLI with git-like interface")
   .option("-m, --message <message:string>", "Note content (inline mode)")
@@ -43,7 +44,8 @@ const main = new Command()
       Deno.exit(1);
     }
   })
-  .command("alias", aliasCommand);
+  .command("alias", aliasCommand)
+  .command("keyword", keywordCommand);
 
 if (import.meta.main) {
   await main.parse(Deno.args);
