@@ -34,6 +34,24 @@ export async function setAlias(name: string, path: string): Promise<void> {
   await saveConfig(config);
 }
 
+export async function removeAlias(name: string): Promise<void> {
+  const config = await loadConfig();
+
+  if (!config.aliases[name]) {
+    throw new Error(`Alias '${name}' does not exist.`);
+  }
+
+  delete config.aliases[name];
+
+  // If we deleted the default alias, clear it or set to another alias
+  if (config.default === name) {
+    const remainingAliases = Object.keys(config.aliases);
+    config.default = remainingAliases.length > 0 ? remainingAliases[0] : undefined;
+  }
+
+  await saveConfig(config);
+}
+
 export async function getNotePath(aliasOrPath?: string): Promise<string> {
   const config = await loadConfig();
 

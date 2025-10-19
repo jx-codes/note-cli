@@ -2,8 +2,8 @@
   "tasks": {
     "dev": "deno run --allow-read --allow-write --allow-env --allow-run --watch main.ts",
     "run": "deno run --allow-read --allow-write --allow-env --allow-run main.ts",
-    "compile": "deno compile --allow-read --allow-write --allow-env --allow-run --output notes main.ts",
-    "global-install": "deno compile --allow-read --allow-write --allow-env --allow-run --output notes main.ts && cp notes ~/.deno/bin/notes"
+    "compile": "deno compile --allow-read --allow-write --allow-env --allow-run --output qn main.ts",
+    "global-install": "deno compile --allow-read --allow-write --allow-env --allow-run --output qn main.ts && cp qn ~/.deno/bin/qn"
   },
   "imports": {
     "@std/assert": "jsr:@std/assert@1",
@@ -13,6 +13,8 @@
     "@cliffy/prompt": "jsr:@cliffy/prompt@1.0.0-rc.7",
     "@std/path": "jsr:@std/path@1",
     "@std/fs": "jsr:@std/fs@1",
-    "@std/async": "jsr:@std/async@1"
+    "@std/async": "jsr:@std/async@1",
+    "wink-nlp": "npm:wink-nlp@2.4.0",
+    "wink-eng-lite-web-model": "npm:wink-eng-lite-web-model@1.6.0"
   }
 }

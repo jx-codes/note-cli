@@ -1,5 +1,5 @@
 import { Command } from "@cliffy/command";
-import { loadConfig, setAlias } from "../config.ts";
+import { loadConfig, setAlias, removeAlias } from "../config.ts";
 
 export const aliasCommand = new Command()
   .description("Manage directory aliases")
@@ -18,6 +18,18 @@ export const aliasCommand = new Command()
         const isDefault = config.default === alias ? " (default)" : "";
         console.log(`  ${alias}: ${aliasPath}${isDefault}`);
       }
+      return;
+    }
+
+    // Handle delete command
+    if (name === "delete") {
+      if (!path) {
+        throw new Error(
+          "Alias name is required. Use 'qn alias delete <name>' to remove an alias."
+        );
+      }
+      await removeAlias(path);
+      console.log(`Alias '${path}' has been removed.`);
       return;
     }
 

@@ -19,7 +19,9 @@
     "jsr:@std/path@^1.1.1": "1.1.2",
     "jsr:@std/path@~1.0.6": "1.0.9",
     "jsr:@std/text@~1.0.7": "1.0.16",
-    "npm:@types/node@*": "24.2.0"
+    "npm:@types/node@*": "24.2.0",
+    "npm:wink-eng-lite-web-model@1.6.0": "1.6.0_wink-nlp@2.4.0",
+    "npm:wink-nlp@2.4.0": "2.4.0"
   },
   "jsr": {
     "@cliffy/ansi@1.0.0-rc.7": {
@@ -115,6 +117,15 @@
     },
     "undici-types@7.10.0": {
       "integrity": "sha512-t5Fy/nfn+14LuOc2KNYg75vZqClpAiqscVvMygNnlsHBFpSXdJaYtXMcdNLpl/Qvc3P2cB3s6lOV51nqsFq4ag=="
+    },
+    "wink-eng-lite-web-model@1.6.0_wink-nlp@2.4.0": {
+      "integrity": "sha512-j4DaUTWnX3OzFFbTnY4v9RUeebghAd4mEWiJx9rZ29jfyW1OdK6H9UPbY8QrFb6sRIV1wJP2FGe2phA6MSEfwQ==",
+      "dependencies": [
+        "wink-nlp"
+      ]
+    },
+    "wink-nlp@2.4.0": {
+      "integrity": "sha512-d02inlNJL0LLNTLoYfkxZYGrqnYDSZV4HI4WpeuyIEfpu7UcUqUW1ZYWr+JTFm4ZR6dQdzOW/FtHEQRO+o/zzA=="
     }
   },
   "workspace": {
@@ -126,7 +137,9 @@
       "jsr:@std/assert@1",
       "jsr:@std/async@1",
       "jsr:@std/fs@1",
-      "jsr:@std/path@1"
+      "jsr:@std/path@1",
+      "npm:wink-eng-lite-web-model@1.6.0",
+      "npm:wink-nlp@2.4.0"
     ]
   }
 }

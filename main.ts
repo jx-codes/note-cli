@@ -2,15 +2,17 @@
 
 import { Command } from "@cliffy/command";
 import { aliasCommand } from "./src/commands/alias.ts";
-import { keywordCommand } from "./src/commands/keyword.ts";
+import { tagCommand } from "./src/commands/tag.ts";
+import { syncCommand } from "./src/commands/sync.ts";
+import { discoverCommand } from "./src/commands/discover.ts";
 import { getNotePath } from "./src/config.ts";
 import { openEditor } from "./src/editor.ts";
 import { extractTitle, saveNote } from "./src/note.ts";
 
 const main = new Command()
-  .name("notes")
-  .version("1.0.0")
-  .description("Quick note-taking CLI with git-like interface")
+  .name("qn")
+  .version("2.0.0")
+  .description("Quick note-taking CLI with intelligent NLP-based auto-tagging")
   .option("-m, --message <message:string>", "Note content (inline mode)")
   .option(
     "-o, --origin <path:string>",
@@ -35,8 +37,8 @@ const main = new Command()
       const filepath = await saveNote(content, directory);
       const title = extractTitle(content);
 
-      console.log(`Note saved: ${filepath}`);
-      console.log(`Title: ${title}`);
+      console.log(`✓ Note saved: ${filepath}`);
+      console.log(`  Title: ${title}`);
     } catch (error) {
       console.error(
         `Error: ${error instanceof Error ? error.message : String(error)}`
@@ -45,7 +47,9 @@ const main = new Command()
     }
   })
   .command("alias", aliasCommand)
-  .command("keyword", keywordCommand);
+  .command("tag", tagCommand)
+  .command("sync", syncCommand)
+  .command("discover", discoverCommand);
 
 if (import.meta.main) {
   await main.parse(Deno.args);
