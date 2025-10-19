@@ -1,16 +1,17 @@
 # Quick Notes (qn) - Complete User Guide
 
-A powerful CLI tool for quick note-taking with intelligent NLP-based auto-tagging using wink-nlp.
+Capture thoughts from the command line and get perfectly-tagged markdown notes. Create NLP-powered tagging rules once, then every note you take gets automatically organized. Great for feeding your Obsidian vault (or any markdown-based system) without manual tagging.
 
 ## Table of Contents
 
 1. [Getting Started](#getting-started)
-2. [Taking Notes](#taking-notes)
-3. [Managing Aliases](#managing-aliases)
-4. [Auto-Tagging with Rules](#auto-tagging-with-rules)
-5. [Discovering Patterns](#discovering-patterns)
-6. [Syncing Tags](#syncing-tags)
-7. [Advanced Examples](#advanced-examples)
+2. [The Obsidian Workflow](#the-obsidian-workflow)
+3. [Taking Notes](#taking-notes)
+4. [Managing Aliases](#managing-aliases)
+5. [Auto-Tagging with Rules](#auto-tagging-with-rules)
+6. [Discovering Patterns](#discovering-patterns)
+7. [Syncing Tags](#syncing-tags)
+8. [Advanced Examples](#advanced-examples)
 
 ---
 
@@ -30,6 +31,48 @@ Get help anytime:
 qn --help
 qn <command> --help  # Help for specific commands
 ```
+
+---
+
+## The Obsidian Workflow
+
+Point `qn` at your Obsidian vault and capture notes from anywhere. Your graph view and tag searches stay clean without you ever manually organizing.
+
+### Quick Setup
+
+```bash
+# Point to your vault
+qn alias vault ~/Documents/ObsidianVault
+qn alias vault default
+
+# Create rules for your workflow
+qn tag when keyword meeting --require-entity DATE --tags meeting,scheduled
+qn tag when pattern "VERB PROPN" --tags learning,goal
+qn tag when entity URL --tags reference,link
+qn tag when literal "need to" --tags todo,action
+```
+
+### Capture from Anywhere
+
+Now shell one-liners become perfectly-tagged vault notes:
+
+```bash
+# In your terminal while coding
+qn -m "Meeting with Sarah on Friday about API redesign"
+# → Saved with: #meeting #scheduled
+
+# Reading documentation
+qn -m "Learn Kubernetes orchestration. Great guide: https://k8s.io/docs"
+# → Saved with: #learning #goal #reference #link
+
+# During standup
+qn -m "Need to review PR #431 before end of day"
+# → Saved with: #todo #action
+```
+
+Your notes appear in your vault instantly, properly tagged, ready for Obsidian's graph view and search. No manual organization needed.
+
+**Not using Obsidian?** This works with any markdown-based system or just plain directory organization.
 
 ---
 
